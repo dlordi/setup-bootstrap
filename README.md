@@ -8,7 +8,7 @@
 - inserire la chiavetta USB e rinominarla in `J:`
   - per rinominarla, cercare "gestione dischi" nel menu start
 - aprire il file delle password presente nella chiavetta USB
-- accedere a github con una finestra anonima/inprivate di edge
+- accedere a github con una **finestra anonima/inprivate** di edge
   - bisogna accedere anche a gmail per inserire il codice di convalida di github
 - continuare l'installazione tramite la guida presente nel repo `how-to`
   - https://github.com/dlordi/how-to/blob/main/win-setup/README.md
