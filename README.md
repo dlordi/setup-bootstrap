@@ -10,5 +10,6 @@
 - aprire il file delle password presente nella chiavetta USB
 - accedere a github con una **finestra anonima/inprivate** di edge
   - bisogna accedere anche a gmail per inserire il codice di convalida di github
+- clonare il repo https://github.com/dlordi/config
 - continuare l'installazione tramite la guida presente nel repo `how-to`
   - https://github.com/dlordi/how-to/blob/main/win-setup/README.md
