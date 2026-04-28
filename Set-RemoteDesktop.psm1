@@ -19,8 +19,10 @@ function Set-RemoteDesktop {
             $rules = Get-NetFirewallRule -DisplayGroup 'Remote Desktop' -ErrorAction SilentlyContinue
             $enumVal = if ($enable) {
                 [Microsoft.PowerShell.Cmdletization.GeneratedTypes.NetSecurity.Enabled]::Enabled
+                # 'True'
             } else {
                 [Microsoft.PowerShell.Cmdletization.GeneratedTypes.NetSecurity.Enabled]::Disabled
+                # 'False'
             }
             if ($rules) {
                 $rules | Set-NetFirewallRule -Enabled $enumVal -ErrorAction SilentlyContinue
