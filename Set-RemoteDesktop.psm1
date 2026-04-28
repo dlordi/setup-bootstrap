@@ -73,7 +73,7 @@ function Set-RemoteDesktop {
             }
         }
 
-        Write-Output "Remote Desktop $(if ($enable) { 'enabled' } else { 'disabled' })."
+        Write-Output "Remote Desktop $(if ($enable) { 'enabled' } else { 'disabled' }) (computer name: $env:COMPUTERNAME)."
     } catch {
         Write-Warning "Failed to modify Remote Desktop settings: $_"
     }
