@@ -17,11 +17,7 @@ function Set-RemoteDesktop {
         # Firewall rules: attempt to enable/disable built-in Remote Desktop rules
         if (Get-Command 'Get-NetFirewallRule' -ErrorAction SilentlyContinue) {
             $rules = Get-NetFirewallRule -DisplayGroup 'Remote Desktop' -ErrorAction SilentlyContinue
-            $enumVal = if ($enable) {
-                'True'
-            } else {
-                'False'
-            }
+            $enumVal = if ($enable) { 'True' } else { 'False' }
             # $enumVal = if ($enable) {
             #     [Microsoft.PowerShell.Cmdletization.GeneratedTypes.NetSecurity.Enabled]::Enabled
             # } else {
@@ -76,7 +72,7 @@ function Set-RemoteDesktop {
             }
         }
 
-        Write-Output "Remote Desktop $(if ($enable) { 'enabled' } else { 'disabled' }) (computer name: $env:COMPUTERNAME)."
+        Write-Output "Remote Desktop $(if ($enable) { 'enabled' } else { 'disabled' }) on computer $env:COMPUTERNAME."
     } catch {
         Write-Warning "Failed to modify Remote Desktop settings: $_"
     }
