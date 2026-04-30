@@ -5,7 +5,7 @@
   - scegliere di **NON** collegarsi automaticamente al wifi/hotspot
 - se si vuole continuare la configurazione da una sessione di desktop remoto, abilitarla con [questo script](./Set-RemoteDesktop.psm1) che va eseguito **COME AMMINISTRATORE** con questo comando:
   ```bat
-  powershell -NoProfile -NoLogo -ExecutionPolicy Bypass -Command 'Import-Module .\Set-RemoteDesktop.psm1; Set-RemoteDesktop $true'
+  powershell -NoProfile -NoLogo -ExecutionPolicy Bypass -Command 'Import-Module "$env:USERPROFILE\Downloads\Set-RemoteDesktop.psm1"; Set-RemoteDesktop $true'
   ```
 - installare keepass con il comando `winget install --source winget --interactive --exact --id DominikReichl.KeePass`
   - se il comando `winget` non è disponibile, installarlo eseguendo in powershell **come amministratore** questo comando `Add-AppxPackage -Path 'https://github.com/microsoft/winget-cli/releases/download/v1.28.220/Microsoft.DesktopAppInstaller_8wekyb3d8bbwe.msixbundle'`
