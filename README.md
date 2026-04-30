@@ -3,6 +3,7 @@
 - collegarsi all'hotspot dello smartphone
   - la password va digitata a mano...
   - scegliere di **NON** collegarsi automaticamente al wifi/hotspot
+  - scegliere di essere visibili all'interno della rete
 - se si vuole continuare la configurazione da una sessione di desktop remoto, abilitarla con [questo script](./Set-RemoteDesktop.psm1) che va eseguito **COME AMMINISTRATORE** con questo comando:
   ```bat
   powershell -NoProfile -NoLogo -ExecutionPolicy Bypass -Command 'Import-Module "$env:USERPROFILE\Downloads\Set-RemoteDesktop.psm1"; Set-RemoteDesktop $true'
