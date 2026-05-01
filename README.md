@@ -4,7 +4,11 @@
   - la password va digitata a mano...
   - scegliere di **NON** collegarsi automaticamente al wifi/hotspot
   - scegliere di essere visibili all'interno della rete
-- per applicare la configurazione di risparmio energetico che evita di andare in standby, scaricare [questo script](./Set-PowerScheme.ps1) che va eseguito **COME AMMINISTRATORE** con questo comando:
+- per disabilitare la telemetria di Windows, scaricare [questo script](./Set-RegistryValue.psm1) che va eseguito **COME AMMINISTRATORE** con questo comando:
+  ```bat
+  powershell -NoProfile -NoLogo -ExecutionPolicy Bypass -Command 'Import-Module "$env:USERPROFILE\Downloads\Set-RegistryValue.psm1"; Set-RegistryValue -FullPath HKLM\SOFTWARE\Policies\Microsoft\Windows\DataCollection -Name AllowTelemetry -Type DWord -Value 0'
+  ```
+- per applicare la configurazione di risparmio energetico che evita di andare in standby, scaricare [questo script](./Set-PowerScheme.psm1) che va eseguito **COME AMMINISTRATORE** con questo comando:
   ```bat
   powershell -NoProfile -NoLogo -ExecutionPolicy Bypass -Command 'Import-Module "$env:USERPROFILE\Downloads\Set-PowerScheme.psm1"; Set-PowerScheme'
   ```
