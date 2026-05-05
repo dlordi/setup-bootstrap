@@ -16,10 +16,15 @@
   ```bat
   powershell -NoProfile -NoLogo -ExecutionPolicy Bypass -Command 'Import-Module "$env:USERPROFILE\Downloads\Set-RemoteDesktop.psm1"; Set-RemoteDesktop $true'
   ```
+- se `winget` non fosse disponibile, installarlo eseguendo **come amministratore** questi comandi (ed eventualmente facendo un riavvio)
+  ```bat
+  powershell -NoProfile -NoLogo -ExecutionPolicy Bypass -Command "Add-AppxPackage -Path 'https://github.com/microsoft/winget-cli/releases/download/v1.28.220/Microsoft.DesktopAppInstaller_8wekyb3d8bbwe.msixbundle'"
+
+  @REM se il comando di cui sopra va in errore perché manca Windows App Runtime eseguire questi comandi e provare nuovamente
+  @REM powershell -NoProfile -NoLogo -ExecutionPolicy Bypass -Command "Invoke-WebRequest -Uri https://aka.ms/windowsappsdk/1.8/latest/windowsappruntimeinstall-x64.exe -OutFile ""$env:TEMP\windowsappruntimeinstall-x64.exe"""
+  @REM %TEMP%\windowsappruntimeinstall-x64.exe --quiet
+  ```
 - installare keepass con il comando `winget install --source winget --interactive --exact --id DominikReichl.KeePass`
-  - se il comando `winget` non è disponibile, installarlo eseguendo in powershell **come amministratore** questo comando `Add-AppxPackage -Path 'https://github.com/microsoft/winget-cli/releases/download/v1.28.220/Microsoft.DesktopAppInstaller_8wekyb3d8bbwe.msixbundle'`
-    - fare installazione solo per l'utente
-    - **BISOGNA FARE UN RIAVVIO** per avere il comando a disposizione nel prompt dei comandi
 - inserire la chiavetta USB e rinominarla in `J:` (usare il comando `diskmgmt.msc`)
 - aprire il file delle password presente nella chiavetta USB
 - [accedere a github](https://github.com/login?return_to=https%3A%2F%2Fgithub.com%2Fdlordi) con una **finestra anonima/inprivate** di edge
