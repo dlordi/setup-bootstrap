@@ -24,7 +24,7 @@
   ```
 - se `winget` non fosse disponibile, installarlo eseguendo **IN POWERSHELL COME AMMINISTRATORE** questi comandi (ed eventualmente facendo un riavvio)
   ```ps1
-  Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass -Force
+  $ProgressPreference = 'SilentlyContinue'
   Add-AppxPackage -Path 'https://github.com/microsoft/winget-cli/releases/download/v1.28.220/Microsoft.DesktopAppInstaller_8wekyb3d8bbwe.msixbundle'
 
   # se il comando di cui sopra va in errore perché manca Windows App Runtime eseguire questi comandi e provare nuovamente
