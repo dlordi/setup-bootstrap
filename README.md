@@ -9,20 +9,23 @@
   powershell -NoProfile -NoLogo -ExecutionPolicy Bypass -Command 'Import-Module "$env:USERPROFILE\Downloads\Set-RegistryValue.psm1"; Set-RegistryValue -FullPath HKLM\SOFTWARE\Policies\Microsoft\Windows\DataCollection -Name AllowTelemetry -Type DWord -Value 0'
   ```
 - per applicare la configurazione di risparmio energetico che evita di andare in standby, scaricare [questo script](./Set-PowerScheme.psm1) che va eseguito **COME AMMINISTRATORE** con questo comando:
-  ```bat
-  powershell -NoProfile -NoLogo -ExecutionPolicy Bypass -Command 'Import-Module "$env:USERPROFILE\Downloads\Set-PowerScheme.psm1"; Set-PowerScheme'
+  ```ps1
+  Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass -Force
+  Import-Module "$env:USERPROFILE\Downloads\Set-PowerScheme.psm1"; Set-PowerScheme
   ```
 - se si vuole continuare la configurazione da una sessione di desktop remoto, abilitarla con [questo script](./Set-RemoteDesktop.psm1) che va eseguito **COME AMMINISTRATORE** con questo comando:
-  ```bat
-  powershell -NoProfile -NoLogo -ExecutionPolicy Bypass -Command 'Import-Module "$env:USERPROFILE\Downloads\Set-RemoteDesktop.psm1"; Set-RemoteDesktop $true'
+  ```ps1
+  Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass -Force
+  Import-Module "$env:USERPROFILE\Downloads\Set-RemoteDesktop.psm1"; Set-RemoteDesktop $true
   ```
 - se `winget` non fosse disponibile, installarlo eseguendo **COME AMMINISTRATORE** questi comandi (ed eventualmente facendo un riavvio)
-  ```bat
-  powershell -NoProfile -NoLogo -ExecutionPolicy Bypass -Command "Add-AppxPackage -Path 'https://github.com/microsoft/winget-cli/releases/download/v1.28.220/Microsoft.DesktopAppInstaller_8wekyb3d8bbwe.msixbundle'"
+  ```ps1
+  Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass -Force
+  Add-AppxPackage -Path 'https://github.com/microsoft/winget-cli/releases/download/v1.28.220/Microsoft.DesktopAppInstaller_8wekyb3d8bbwe.msixbundle'
 
-  @REM se il comando di cui sopra va in errore perché manca Windows App Runtime eseguire questi comandi e provare nuovamente
-  @REM powershell -NoProfile -NoLogo -ExecutionPolicy Bypass -Command "Invoke-WebRequest -Uri https://aka.ms/windowsappsdk/1.8/latest/windowsappruntimeinstall-x64.exe -OutFile ""$env:USERPROFILE\Downloads\windowsappruntimeinstall-x64.exe"""
-  @REM "%USERPROFILE%\Downloads\windowsappruntimeinstall-x64.exe" --quiet
+  # se il comando di cui sopra va in errore perché manca Windows App Runtime eseguire questi comandi e provare nuovamente
+  # Invoke-WebRequest -Uri https://aka.ms/windowsappsdk/1.8/latest/windowsappruntimeinstall-x64.exe -OutFile "$env:USERPROFILE\Downloads\windowsappruntimeinstall-x64.exe"
+  # Start-Process "$env:USERPROFILE\Downloads\windowsappruntimeinstall-x64.exe" -ArgumentList '--quiet' -Wait -Verb RunAs
   ```
 - installare keepass con il comando `winget install --source winget --interactive --exact --id DominikReichl.KeePass`
 - inserire la chiavetta USB e rinominarla in `J:` (usare il comando `diskmgmt.msc`)
