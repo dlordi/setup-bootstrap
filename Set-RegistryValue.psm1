@@ -97,7 +97,7 @@ function Set-RegistryValue {
             } -OperationName "Create-And-Set-$subPath-$Name"
 
             Write-Output (Write-Result -changed $true -currentValue $Value -message "Value created")
-            exit 0
+            return $true
         }
 
         $currentValue = $existing.$Name
@@ -127,7 +127,7 @@ function Set-RegistryValue {
 
         if ($isEqual) {
             Write-Output (Write-Result -changed $false -currentValue $currentValue -message 'NO change required; value and type already match')
-            exit 0
+            return $true
         }
 
         # Change value/type using .NET
@@ -167,7 +167,7 @@ function Set-RegistryValue {
 
         if ($success) {
             Write-Output (Write-Result -changed $true -currentValue $verifyValue -message 'Value update successfully')
-            exit 0
+            return $true
         } else {
             throw "Check failed after writing. Value read: $verifyValue (type: $verifyKind)"
         }
@@ -175,7 +175,7 @@ function Set-RegistryValue {
     } catch {
         $err = $_.Exception.Message
         Write-Output (Write-Result -changed $false -currentValue $null -message 'ERROR' -errorMessage $err)
-        exit 1
+        return $false
     }
 
 }
