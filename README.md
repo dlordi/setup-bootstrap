@@ -27,9 +27,13 @@
   $ProgressPreference = 'SilentlyContinue'
   Add-AppxPackage -Path 'https://github.com/microsoft/winget-cli/releases/download/v1.28.220/Microsoft.DesktopAppInstaller_8wekyb3d8bbwe.msixbundle'
 
-  # se il comando di cui sopra va in errore perché manca Windows App Runtime eseguire questi comandi e provare nuovamente
-  # Invoke-WebRequest -Uri https://aka.ms/windowsappsdk/1.8/latest/windowsappruntimeinstall-x64.exe -OutFile "$env:USERPROFILE\Downloads\windowsappruntimeinstall-x64.exe"
-  # Start-Process "$env:USERPROFILE\Downloads\windowsappruntimeinstall-x64.exe" -ArgumentList '--quiet' -Wait -Verb RunAs
+  # se il comando di cui sopra va in errore perché mancano delle dipendenze eseguire questi comandi e provare di nuovo
+  # Invoke-WebRequest -Uri https://github.com/microsoft/winget-cli/releases/download/v1.28.240/DesktopAppInstaller_Dependencies.zip -OutFile "$env:USERPROFILE\Downloads\DesktopAppInstaller_Dependencies.zip"
+  # Expand-Archive "$env:USERPROFILE\Downloads\DesktopAppInstaller_Dependencies.zip" -DestinationPath "$env:USERPROFILE\Downloads\DesktopAppInstaller_Dependencies"
+  # Add-AppxPackage -Path "$env:USERPROFILE\Downloads\DesktopAppInstaller_Dependencies\x64\*.appx"
+  #
+  # sito alternativo (non ufficiale) da cui poter scaricare parte delle dipendenze richieste se i comandi precedenti non dovessero funzionare
+  # https://github.com/M1k3G0/Win10_LTSC_VP9_Installer
   ```
 - installare keepass con il comando
   ```bat
