@@ -1,9 +1,28 @@
 # setup-bootstrap
 
+## operazioni da eseguire durante l'installazione interattiva/attended
+
 - collegarsi all'hotspot dello smartphone
   - la password va digitata a mano...
   - scegliere di **NON** collegarsi automaticamente al wifi/hotspot
   - scegliere di essere visibili all'interno della rete
+
+- **CREARE ACCOUNT LOCALE (WINDOWS 11)**
+  - alla richiesta di creare un account online, premere `Shift+F10`
+  - nel prompt dei comandi che si apre eseguire
+    ```bat
+    start ms-cxh:localonly
+    ```
+  - si apre la classica finestra in cui si può creare un account locale senza doverne fare uno online
+
+## operazioni da eseguire dopo che Windows ha finito l'installazione
+
+- per cambiare il nome del PC eseguire questo comando **IN POWERSHELL COME AMMINISTRATORE**:
+
+  ```ps1
+  # hostname # comando per visualizzare il nome attuale del PC
+  Rename-Computer -NewName 'nuovo-nome-PC' # BISOGNA RIAVVIARE IL PC!!
+  ```
 
 - per disabilitare la telemetria di Windows, scaricare [questo script](./Set-RegistryValue.psm1) che va eseguito **IN POWERSHELL COME AMMINISTRATORE** con questi comandi:
 
